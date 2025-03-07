@@ -1,0 +1,1 @@
+savedcmd_/home/phamlam21/ws/LinuxKernel/04-fops-rw/hello.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/phamlam21/ws/LinuxKernel/04-fops-rw/hello.ko /home/phamlam21/ws/LinuxKernel/04-fops-rw/hello.o /home/phamlam21/ws/LinuxKernel/04-fops-rw/hello.mod.o /home/phamlam21/ws/LinuxKernel/04-fops-rw/.module-common.o

@@ -1,0 +1,36 @@
+*signal -> IPC (giao tiep lien tien trinh lau doi cua Unix System)
+       -> sofeware interrupt co che de xu ly cac su kien bat dong bo 
+*SUS (bo tinh nang de duoc coi la Unix System)
+*Linux = Unix-like (support 1 phan cua bo SUS)
+
+*3 cach xu ly signal:
+    -> ignore the signal: - khong action nao duoc thuc hien
+                          - sigkill va sigstop khong the bi ignore
+    -> catch and handle the signal: 
+        - Kernel se tam dung thuc thi main thread va nhay toi ham xu ly signal duoc user dang ki trong process
+        - sigkill vaf sigstop kh the catch 
+        - 2 signal SIGINT va SIGTERM thuong duoc dung
+    -> Perform the defaul action: tuy vao tung loai signal
+*Ham xu ly ngat(Signal handle)
+    sighandler_t signal(int signo, sighandler_t handler);
+    -> signal la 1 sofeware interrupt nen nhay cam ve mat thoi gian (xu ly nhanh nhat co the) -> khi thuc thi
+    chiem toan bo cpu cua process
+*SIGKILL -> kh the bi catch
+*SIGTERM -> co the catch
+*SIGINT -> chi kill cac tien trinh foreground process 
+*SIGUSR1/SIGUSR2 : tu dinh nghia khong co default
+
+*gui signal trong process:
+    System call kill(pid, sigid);
+*blocking&unblocking signal
+    -> sigemptyset(sigset_t *set) -> khoi tao = 0 cho tat ca cac signal (1 la block, 0 la unblock)
+    -> sigfillset(sigset_t *set) -> khoi tao = 1 cho tat ca cac signal 
+    -> sigaddset(sigset_t *set, int signo) vd: sigaddset(newset, SIGOUT) -> SIGOUT = 1 -> add vao mask tam thoi
+    -> sigdelset(sigset_t *set, int signo) vd: sigdelset(newset, SIGOUT) -> tu 1 ve 0 -> xoa khoi mask tam thoi 
+    -> sigmember(const sigset_t *set, int signo) -> tra ve 1, 0 -1 kiem tra gia tri cua signal (-1 khi khong thuc hien duoc lenh)
+    Sau khi set xong mask tam thoi -> apply vao mask co san
+    -> sigprocmask(..., newset, oldset) -> ... : -> SIG_SETMASK : thay toan bo newset vao oldset 
+                                                 -> SIG_BLOCK : them nhung cai newset co vao oldset khong co
+                                                 -> SIG_UNBLOCK : xoa nhung cai newset co ma oldset cung co 
+                                                 -> neu newset la NULL -> lay ra gia tri cua oldset
+#define _POSIX_SOURCE -> để sử dụng các tính năng của UNIX (c cũ cần thêm hiện đã tích hơp sẵn)

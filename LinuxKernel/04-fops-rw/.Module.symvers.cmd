@@ -1,0 +1,1 @@
+savedcmd_/home/phamlam21/ws/LinuxKernel/04-fops-rw/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/phamlam21/ws/LinuxKernel/04-fops-rw/Module.symvers -T /home/phamlam21/ws/LinuxKernel/04-fops-rw/modules.order -i Module.symvers -e 
