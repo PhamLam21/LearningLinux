@@ -1,0 +1,1 @@
+cmd_/home/phamlam21/ws/LinuxLerning/LinuxPorting/Led-Driver-Legacy/LedDriver.mod := { echo  /home/phamlam21/ws/LinuxLerning/LinuxPorting/Led-Driver-Legacy/LedDriver.o;  echo; } > /home/phamlam21/ws/LinuxLerning/LinuxPorting/Led-Driver-Legacy/LedDriver.mod
